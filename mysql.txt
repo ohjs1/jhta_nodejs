@@ -1,0 +1,28 @@
+mysql 다운로드
+https://dev.mysql.com/downloads/installer/
+
+
+password:java1234
+
+
+
+mysql> create database sample01 default character set utf8;
+mysql> use sample01;
+create table members
+(
+	num int auto_increment primary key,
+	name varchar(10) not null,
+	phone varchar(15),
+	addr varchar(20),
+	regdate date
+);
+insert into members
+values(0,'홍길동','010','서울',now());
+commit;
+
+create table users
+(
+id varchar(10) primary key,
+pwd varchar(15),
+email varchar(15)
+);

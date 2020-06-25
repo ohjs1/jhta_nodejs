@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>insert.html</title>
+</head>
+<body>
+<h1>회원수정</h1>
+<form method="post" action="/updateOk">
+	회원번호 <input type="text" readonly="readonly" name="num"
+	value="<%=member.num%>"><br>
+	이름 <input type="text" name="name"
+	value="<%=member.name%>"><br>
+	전화번호 <input type="text" name="phone"
+	value="<%=member.phone%>"><br>
+	주소 <input type="text" name="addr"
+	value="<%=member.addr%>"><br>
+	가입일 <input type="text" value="<%=member.regdate%>"><br>
+	<input type="submit" value="저장">
+</form>
+</body>
+</html>
+
+
