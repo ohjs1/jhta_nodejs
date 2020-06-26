@@ -1,0 +1,15 @@
+extends layout
+block content
+  h1  회원정보 수정
+  form(method='post', action='/users/updateOk')
+    p  아이디
+    p
+      input(type='text', name='id', value=ulist.id, readonly='readonly')
+    p  비밀번호
+    p
+      input(type='password', name='pwd', value=ulist.pwd)
+    p 이메일
+    p
+      input(type='text', name='email', value=ulist.email)
+    p
+      input(type='submit', value='수정완료')
