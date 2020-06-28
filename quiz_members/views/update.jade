@@ -1,0 +1,16 @@
+extends layout
+block content
+  h1  멤버수정
+  form(method='post', action='/users/UpdateOk')
+    input(type="hidden", name="num", value=list.num)
+    p  이름
+    p
+      input(type='text', name='name', value=list.name)
+    p  폰번호
+    p
+      input(type='text', name='phone', value=list.phone)
+    p 주소
+    p
+      input(type='text', name='addr', value=list.addr)
+    p
+      input(type='submit', value='등록')
