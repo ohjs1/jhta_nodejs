@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>회원정보 수정</h1>
+    <form action="/updateOk" method="POST">
+        아이디<input type="text" name="id" value="<%=id%>" readonly="readonly"><input type="button" value="중복검사" id="btn1"><br>
+        비밀번호<input type="password" name="pwd"><br>
+        이메일<input type="text" name="email"><br>
+        폰번호<input type="phone" name="phone"><br>
+        <input type="submit" value="전송">
+    </form>
+
+</body>
+</html>

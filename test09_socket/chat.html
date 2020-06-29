@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="/socket.io/socket.io.js"></script>
+    <script>
+        window.onload = ()=>{
+            var socket = io.connect(); //서버에 접속하기
+            console.log('서버에 접속함...');
+            //이벤트 발생시키기
+            //socket.emit('sendMsg', {msg : 'hello'});
+
+            var btn1 = document.getElementById('btn1');
+            var btn2 = document.getElementById('btn2');
+            btn1.onclick = ()=>{
+                var nickname = document.getElementById('nickname').value;
+                var msg = document.getElementById('msg').value;
+                socket.emit('sendMsg', {nickname: nickname, msg:msg});
+            }
+            var chat = document.getElementById('chat');
+
+            btn2.onclick = ()=>{
+                var nickname = document.getElementById('nickname').value;
+                socket.emit('exitEvent', {nickname: nickname});
+            }
+
+            socket.on('exit', (data)=>{
+                var div = document.createElement('chat');
+                div.innerHTML = data.nickname + "님이 나가셨습니다.";
+                chat.appendChild(div);
+            });
+
+            socket.on('recMsg', (data)=>{
+                var div = document.createElement('div');
+                div.innerHTML = data.nickname + ":" + data.msg;
+                chat.appendChild(div);
+            });
+        }
+
+    </script>
+    <title>Document</title>
+</head>
+<body>
+    <h1>소켓프로그래밍</h1>
+    <div id="div"></div>
+    닉네임<input type="text" id="nickname"><br>
+    메시지<input type="text" id="msg"><br>
+    <input type="button" value="메시지보내기" id="btn1"><br>
+    <!-- 나가기 버튼을 누르면 xxx님이 나가셨습니다. 라고 div#chat에 추가되도록 해보세요. -->
+    <input type="button" value="나가기" id="btn2"><br>
+    <div id="chat"></div>
+</body>
+</html>

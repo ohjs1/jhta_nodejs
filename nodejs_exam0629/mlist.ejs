@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>회원목록</h1>
+    <table border="3" width="750">
+        <tr>
+            <th>아이디</th>
+            <th>이메일</th>
+            <th>폰번호</th>
+            <th>가입일</th>
+        </tr>
+        <%
+		for(var i=0;i<mlist.length;i++){
+			var mem=mlist[i];
+	    %>
+		<tr>
+			<td><%=mem.id%></td>
+			<td><%=mem.email%></td>
+			<td><%=mem.phone%></td>
+			<td><%=mem.sysdate%></td>
+			<td><a href="/delete?id=<%=mem.id%>">삭제</a></td>
+			<td><a href="/update?id=<%=mem.id%>">수정</a></td>
+		</tr>
+	<%
+		}
+	%>
+    </table>
+</body>
+</html>
