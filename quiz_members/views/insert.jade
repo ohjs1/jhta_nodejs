@@ -1,0 +1,15 @@
+extends layout
+block content
+  h1  멤버추가
+  form(method='post', action='/users/insertOk')
+    p  이름
+    p
+      input(type='text', name='name')
+    p  폰번호
+    p
+      input(type='text', name='phone')
+    p 주소
+    p
+      input(type='text', name='addr')
+    p
+      input(type='submit', value='등록')
