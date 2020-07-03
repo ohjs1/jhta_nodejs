@@ -13,6 +13,18 @@ var chatServer = (app) => {
             socket.broadcast.to(data.roomname).emit('join', {nickname:data.nickname});
             
         });
+        socket.on('sendMsg', function(data){
+             //data.roomname에 들어있는 소켓들에게 이벤트 발생시키기(자신 포함)
+            io.to(data.roomname).emit('recMsg', data);
+        });
+        
+        socket.on('leaveRoom', (data)=>{
+            io.to(data.roomname).emit('leaveRoom', data);
+            //방의 참석자 명단에서 닉네임 삭제하기
+            chat.removeAttendants(data.roomname, data.nickname);
+            socket.leave(data.roomname); //입장한 방에서 나가기
+            socket.disconnect();
+        })
     });
 };
 

@@ -17,6 +17,12 @@ router.post('/enter', (req, res)=>{
   res.render('enter', {nickname:nickname, roomlist:roomlist});
 });
 
+router.get('/enter', (req, res)=>{
+  let nickname = req.body.nickname;
+  var roomlist = chat.getRoomList();
+  res.render('enter', {nickname:nickname, roomlist:roomlist});
+});
+
 router.post('/makeroom', (req, res)=>{
   var nickname = req.session.nickname;
   var roomname = req.body.roomname;

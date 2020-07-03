@@ -27,6 +27,19 @@ var chat = {
             return roomname === element.roomname;
         });
         return rooms[0].attendants;
+    },
+
+    removeAttendants: function(roomname, nickname){
+        //입장한 방 구하기
+        var rooms = this.rooms.filter((element)=>{
+            return roomname === element.roomname;
+        });
+
+        //닉네임의 배열 인덱스값 구하기
+        var index = rooms[0].attendants.indexOf(nickname);
+
+        //방참석자명단에서 닉네임 삭제하기
+        rooms[0].attendants.splice(index, 1);
     }
 };
 module.exports = chat;
